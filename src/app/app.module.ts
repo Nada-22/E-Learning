@@ -4,15 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './componants/header/header.component';
-import { HomeComponent } from './componants/home/home.component';
 import { FooterComponent } from './componants/footer/footer.component';
+import { MainlayoutComponent } from './componants/mainlayout/mainlayout.component';
+import { Notfound404Component } from './componants/notfound404/notfound404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
+Notfound404Component,
     FooterComponent,
+    MainlayoutComponent,
     
   ],
   imports: [

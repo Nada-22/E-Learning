@@ -1,30 +1,37 @@
-import { NotfoundModule } from './componants/notfound/notfound.module';
+import { MainlayoutComponent } from './componants/mainlayout/mainlayout.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './componants/home/home.component';
+import { Notfound404Component } from './componants/notfound404/notfound404.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  
-{
-  path: 'courses', 
-  loadChildren: () => import('./componants/course/course.module').then(m => m.CourseModule)
-  },
-
   {
-    path: 'user', 
-    loadChildren: () => import('./componants/user/user.module').then(m => m.UserModule)
+    path: '', component: MainlayoutComponent, children: [
+      { path: '', pathMatch: 'full', redirectTo: 'home'},
+      {
+        path: 'home',
+        loadChildren: () => import('./componants/main-home/main-home.module').then(m => m.MainHomeModule)
+    
+      },
+      
+     {
+      path: 'courses',
+      loadChildren: () => import('./componants/course/course.module').then(m => m.CourseModule)
+      },
+    
+      {
+        path: 'user', 
+        loadChildren: () => import('./componants/user/user.module').then(m => m.UserModule)
+      },
+    
+      {
+        path: 'contact',
+        loadChildren: () => import('./componants/contact/contact.module').then(m => m.ContactModule)
+      },
+      
+    ]
   },
   {
-    path: 'contact', 
-    loadChildren: () => import('./componants/contact/contact.module').then(m => m.ContactModule)
-  },
-  
-  {
-    path: '**',
-    loadChildren: () => import('./componants/notfound/notfound.module').then(m => NotfoundModule)
-  },
+    path: '**', component: Notfound404Component  },
 ];
 
 @NgModule({

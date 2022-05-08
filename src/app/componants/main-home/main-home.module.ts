@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Notfound404Component } from './notfound404/notfound404.component';
+import { HomeComponent } from './home/home.component';
+
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [
-  { path: '',redirectTo:'notfound', component: Notfound404Component }
-];
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+
+]
 
 @NgModule({
   declarations: [
-    Notfound404Component
+    HomeComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)
   ]
 })
-export class NotfoundModule { }
+export class MainHomeModule { }
