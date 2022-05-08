@@ -8,6 +8,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GeneralComponent } from './general/general.component';
 import { ChangPassComponent } from './chang-pass/chang-pass.component';
 import { DetailsComponent } from './details/details.component';
+import { SocialLinksComponent } from './social-links/social-links.component';
+import { ConnectionsComponent } from './connections/connections.component';
 
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
@@ -17,6 +19,8 @@ export const routes: Routes = [
     {path:'general',component:GeneralComponent},
     {path:'changPassword',component:ChangPassComponent},
     {path:'details',component:DetailsComponent},
+    {path:'social',component:SocialLinksComponent},
+    {path:'conections',component:ConnectionsComponent},
 
 
   ]
@@ -28,7 +32,9 @@ export const routes: Routes = [
     DashboardComponent,
     GeneralComponent,
     ChangPassComponent,
-    DetailsComponent
+    DetailsComponent,
+    SocialLinksComponent,
+    ConnectionsComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)
