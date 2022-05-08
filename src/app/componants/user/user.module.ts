@@ -6,6 +6,8 @@ import { SigninComponent } from './signin/signin.component';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GeneralComponent } from './general/general.component';
+import { ChangPassComponent } from './chang-pass/chang-pass.component';
+import { DetailsComponent } from './details/details.component';
 
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
@@ -13,6 +15,9 @@ export const routes: Routes = [
   {path:'dashboard', component: DashboardComponent,
     children: [
     {path:'general',component:GeneralComponent},
+    {path:'changPassword',component:ChangPassComponent},
+    {path:'details',component:DetailsComponent},
+
 
   ]
 },
@@ -21,7 +26,9 @@ export const routes: Routes = [
   declarations: [
     SigninComponent,
     DashboardComponent,
-    GeneralComponent
+    GeneralComponent,
+    ChangPassComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)
