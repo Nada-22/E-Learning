@@ -6,32 +6,37 @@
 
   <div class="card overflow-hidden">
     <div class="row no-gutters row-bordered row-border-light">
-      <div class="col-md-3 pt-0">
-        <div class="list-group list-group-flush account-settings-links">
-          <div class="card-body">
-		<div class="account-settings">
-			<div class="user-profile">
-				<div class="user-avatar">
-					<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
-				</div>
-				<h5 class="user-name">Yuki Hayashi</h5>
-				<h6 class="user-email">yuki@Maxwell.com</h6>
-			</div>
-		</div>
-	</div>
+      <div class="col-md-3 pt-0" >
+        <div class="list-group list-group-flush account-settings-links" >
+          
+          
+          <div class="card-body" >
+            <div class="account-settings" >
+              <div class="user-profile">
+                <div class="user-avatar" >
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                </div>
+                <h5 class="user-name">Yuki Hayashi</h5>
+                <h6 class="user-email">yuki@Maxwell.com</h6>
+              </div>
+            </div>
+          </div>
+          <div style="border-right: solid .5px rgb(221, 217, 217);">
         <a class="list-group-item list-group-item-action active" data-toggle="list"
-            routerLink=""  routerLinkActive="router-link-active">Dashboard</a>
+            routerLink="general" routerLinkActive="router-link-active">Dashboard</a>
           <a class="list-group-item list-group-item-action " data-toggle="list"
             routerLink="general" routerLinkActive="router-link-active" >General</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" routerLink="changPassword">Change
-            password</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" routerLink="details">Info</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" routerLink="social">Social
-            links</a>
           <a class="list-group-item list-group-item-action" data-toggle="list"
+           routerLink="changPassword">Change password</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" 
+          routerLink="details">Info</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" 
+          routerLink="social">Social links</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list"
             routerLink="conections">Connections</a>
-          
-        </div>
+          </div>
+         <br> 
+      </div>
       </div>
       <div class="col-md-9">
                    <router-outlet></router-outlet>
@@ -39,11 +44,6 @@
         
       </div>
     </div>
-  </div>
-
-  <div class="text-right mt-3 ">
-    <button type="button" class="btn btn-primary">Save changes</button>&nbsp;
-    <button type="button" class="btn btn-default">Cancel</button>
   </div>
 
 </div>

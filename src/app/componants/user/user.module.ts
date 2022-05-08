@@ -14,7 +14,7 @@ import { ConnectionsComponent } from './connections/connections.component';
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   // { path: 'dashboard', component: DashboardComponent },
-  {path:'dashboard', component: DashboardComponent,
+  {path:'', component: DashboardComponent,
     children: [
     {path:'general',component:GeneralComponent},
     {path:'changPassword',component:ChangPassComponent},
