@@ -28,10 +28,9 @@ const routes: Routes = [
         loadChildren: () => import('./componants/contact/contact.module').then(m => m.ContactModule)
       },
       
-    ]
-  },
-  {
-    path: '**', component: Notfound404Component  },
+    ]},
+
+  { path: '**', component: Notfound404Component },
 ];
 
 @NgModule({
