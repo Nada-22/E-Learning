@@ -18,9 +18,9 @@
     color: #777777 !important;
 }
 
-body{
+/* body{
     background: #f5f5f5;
-}
+} */
 
 .ui-w-80 {
     width: 80px !important;
@@ -142,5 +142,5 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     color: #9fa8b9;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
