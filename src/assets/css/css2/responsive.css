@@ -1,14 +1,24 @@
 @media (max-width:1619px){
 	/* Main Menu Area css
 	============================================================================================ */
-   .header_area .navbar .search {
+   /* .header_area .navbar .search {
 		margin-left: 40px;
-	}
+	} */
 	/* End Main Menu Area css
 	============================================================================================ */
-	.testimonials_area .owl-prev, .testimonials_area .owl-next {
+	/* .testimonials_area .owl-prev, .testimonials_area .owl-next {
 		right: 15px;
-	}
+	} */
+	.responsive-iframe {
+		/* position: absolute; */
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		/* height: 200%; */
+		border: none;
+	  }
 }
 @media (max-width:1300px){
 	.testimonials_area .owl-prev, .testimonials_area .owl-next {
@@ -76,7 +86,7 @@
 		bottom: 6px;
 		position: relative;
 	}
-	.navbar-toggler span{
+	/* .navbar-toggler span{
 		display: block;
 		width: 25px;
 		height: 3px;
@@ -85,7 +95,7 @@
 		margin-bottom: 4px;
 		transition: all 400ms linear;
 		cursor: pointer;
-	}
+	} */
     .navbar .container{
         padding-left: 15px;
         padding-right: 15px;
