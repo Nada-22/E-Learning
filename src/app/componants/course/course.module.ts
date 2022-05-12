@@ -6,6 +6,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 
+ import {MatTabsModule} from '@angular/material/tabs'; 
+
 export const routes: Routes = [
   { path: '', component: CoursesComponent },
   { path: 'courseDetails', component: CourseDetailsComponent }
@@ -14,10 +16,10 @@ export const routes: Routes = [
 @NgModule({
   declarations: [
     CoursesComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes),MatTabsModule
   ]
 })
 export class CourseModule { }

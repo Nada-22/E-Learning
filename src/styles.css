@@ -5,7 +5,7 @@
 @import"assets/css/bootstrap.min.css";
 @import"assets/css/style.css";
 @import"assets/css/css2/style.css";
-/* @import"assets/css/css2/responsive.css"; */
+@import"assets/css/css2/responsive.css";
 
 
 /* @import '~ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.css'; */
@@ -135,3 +135,6 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     font-weight: 400;
     color: #9fa8b9;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

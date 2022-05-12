@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+// import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 export const routes: Routes = [
@@ -16,7 +16,7 @@ export const routes: Routes = [
     HomeComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),IvyCarouselModule,CarouselModule
+    CommonModule,RouterModule.forChild(routes),IvyCarouselModule,
   ]
 })
 export class MainHomeModule { }
