@@ -10,12 +10,14 @@ import { ChangPassComponent } from './chang-pass/chang-pass.component';
 import { DetailsComponent } from './details/details.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
 import { ConnectionsComponent } from './connections/connections.component';
+import { MainComponent } from './main/main.component';
 
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   // { path: 'dashboard', component: DashboardComponent },
   {path:'', component: DashboardComponent,
     children: [
+    {path:'dashBoard',component:MainComponent},
     {path:'general',component:GeneralComponent},
     {path:'changPassword',component:ChangPassComponent},
     {path:'details',component:DetailsComponent},
@@ -34,7 +36,8 @@ export const routes: Routes = [
     ChangPassComponent,
     DetailsComponent,
     SocialLinksComponent,
-    ConnectionsComponent
+    ConnectionsComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)
