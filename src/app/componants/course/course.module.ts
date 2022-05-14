@@ -11,10 +11,10 @@ import { CourseContentComponent } from './course-content/course-content.componen
 
 export const routes: Routes = [
   { path: '', component: CoursesComponent },
-  // { path: 'courseDetails', component: CourseDetailsComponent },
+  { path: 'courseDetails', component: CourseDetailsComponent },
   // { path: 'courseContent', component: CourseContentComponent }
   
-    {path:'courseDetails', component: CourseDetailsComponent,
+    {path:'courseDetails',
     children: [
     {path:'courseContent',component:CourseContentComponent}
     
