@@ -8,6 +8,7 @@ import { FooterComponent } from './componants/footer/footer.component';
 import { MainlayoutComponent } from './componants/mainlayout/mainlayout.component';
 import { Notfound404Component } from './componants/notfound404/notfound404.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ Notfound404Component,
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

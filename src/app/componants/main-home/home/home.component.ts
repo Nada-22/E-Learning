@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import {  } from 'ngx-owl-carousel-o';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -9,34 +10,24 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class HomeComponent implements OnInit {
 
 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
 
-  constructor() { }
+
+  constructor(private _user:UserService) { }
 
   ngOnInit(): void {
+    this.getuser();
   }
+  getuser() {
+    
+    this._user.getLoginUser('62815afde7e352da8b3f4b6d').subscribe(
+      (res: any) => { 
+         console.log(res);
+      },
+      (err: any) => { 
+        console.log(err);
+
+      }
+);}
+
 
 }
