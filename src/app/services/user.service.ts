@@ -13,7 +13,7 @@ export class UserService {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgxNWFmZGU3ZTM1MmRhOGIzZjRiNmQiLCJpYXQiOjE2NTI2NDQ5MjV9.GWi1uw5EsmGjOVfEM0SX3Re2xQAsblXyd9ilnPxdnyc',
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgyOTliMzA0MGNjZDdlNGRiYWE4NGUiLCJpYXQiOjE2NTI3MjYxOTV9.9CsAduFohFr3inr_clkg-1OnL52bQ4WPoHrFKCU16sA',
   });
   getLoginUser(id: any) { 
     return this._httpClient.get(this.url + `user/${id}`, {headers: this.headers});
