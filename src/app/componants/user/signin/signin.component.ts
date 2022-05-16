@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,12 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth:AuthService) { }
 
   ngOnInit(): void {
     /*global $, document, window, setTimeout, navigator, console, location*/
 
 
   }
+  user = new User();
+  signupuser(name: string, email: string, password: string) {
+    
+    this.user.name = name;
+    this.user.mail = email;
+    this.user.password = password;
+    this.auth.Signup(this.user).subscribe(
+      (res: any) => { 
+        localStorage.setItem('token',res.tokens[0])
 
+      console.log(res);
+
+      }, (err: any) => { 
+      console.log(err);
+
+      }
+    )
+  }
 }

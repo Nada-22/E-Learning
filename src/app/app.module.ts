@@ -9,6 +9,8 @@ import { MainlayoutComponent } from './componants/mainlayout/mainlayout.componen
 import { Notfound404Component } from './componants/notfound404/notfound404.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
