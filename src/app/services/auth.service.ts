@@ -15,7 +15,6 @@ getToken(){
     return this.http.post(this.url+'user/signup' , data)
    }
   login(data:any) {
-    return this.http.post(this.url+'user/login', data)
-      
+    return this.http.post(this.url+'user/login', data)    
  }
 }
