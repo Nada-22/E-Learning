@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
+import { UserdataService } from 'src/app/services/userdata.service';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -10,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private auth:AuthService,private router: Router,) { }
+  constructor(private auth:AuthService,private router: Router,private data:UserdataService) { }
 
   ngOnInit(): void {
     /*global $, document, window, setTimeout, navigator, console, location*/
@@ -19,13 +22,16 @@ export class SigninComponent implements OnInit {
   }
   user = new User();
   loginUser = new User();
-
+  // message!:string;
+  subscription!: Subscription;
   signupuser(name: string, email: string, password: string) {
     
     this.user.name = name;
     this.user.mail = email;
     this.user.password = password;
     console.log(this.user)
+    this.subscription = this.data.currentdata.subscribe(userinfo => this.user = userinfo)
+
     this.auth.Signup(this.user).subscribe(
       (res: any) => { 
         Swal.fire(
@@ -65,6 +71,7 @@ export class SigninComponent implements OnInit {
     this.auth.login(this.user).subscribe(
       (res: any) => { 
         localStorage.setItem('token',res.tokens[0])
+        this.subscription = this.data.currentdata.subscribe(userinfo => this.user = userinfo)
 
       console.log(res);
       localStorage.setItem('id',res._id)

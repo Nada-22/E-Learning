@@ -13,21 +13,9 @@ userId:any;
   constructor(private _user:UserService) { }
   
   ngOnInit(): void {
-    this.userId=localStorage.getItem('id');
     // console.log(this.userId)
-    this.getuser();
   }
-  getuser() {
-    
-    this._user.getLoginUser(this.userId).subscribe(
-      (res: any) => { 
-         console.log(res);
-      },
-      (err: any) => { 
-        console.log(err);
 
-      }
-);}
 
 
 }
