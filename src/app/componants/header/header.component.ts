@@ -10,9 +10,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HeaderComponent implements OnInit {
     userId:any;
-    user=new User();
+    loguser=new User();
 
-  constructor(private _auth:AuthService,private _user:UserService,) { }
+  constructor(private _auth:AuthService,private _user:UserService) { }
   ngOnInit(): void {
       this.userId=localStorage.getItem('id');
        this.getuser();
@@ -23,14 +23,17 @@ export class HeaderComponent implements OnInit {
     this._user.getLoginUser(this.userId).subscribe(
       (res: any) => { 
          console.log(res);
-         this.user.name=res.name;
-         this.user.mail=res.mail;
+         this.loguser.name=res.name;
+         this.loguser.mail=res.mail;
       },
       (err: any) => { 
         console.log(err);
-
       }
-);}
+      );
+    // return this.loguser;
+    }
+
+  
   usertoken() {
     return this._auth.getToken();
   }
