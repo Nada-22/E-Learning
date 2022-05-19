@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService,private router: Router,) { }
 
   ngOnInit(): void {
     /*global $, document, window, setTimeout, navigator, console, location*/
@@ -34,6 +35,9 @@ export class SigninComponent implements OnInit {
         )
         localStorage.setItem('token',res.tokens[0])
       // console.log(res);
+       localStorage.setItem('id',res._id)
+       this.router.navigateByUrl('/home');
+
 
       }, (error: any) => { 
         console.log(error);
@@ -63,6 +67,9 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('token',res.tokens[0])
 
       console.log(res);
+      localStorage.setItem('id',res._id)
+             this.router.navigateByUrl('/home');
+
 
       }, (err: any) => { 
       console.log(err);
