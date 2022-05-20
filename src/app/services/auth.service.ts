@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://localhost:3000/';
+  url:string = 'http://localhost:3000/';
   constructor(private http:HttpClient) { }
 //  userdata: any;
 getToken(){
@@ -18,5 +18,8 @@ getToken(){
   login(data: any) {
     // this.userdata=data;
     return this.http.post(this.url+'user/login', data)    
+ }
+ logout(){
+   return this.http.delete(this.url+"user/logout",)
  }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {  } from 'ngx-owl-carousel-o';
+import { CategoryService } from 'src/app/services/category.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,11 +11,25 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
 userId:any;
-
-  constructor(private _user:UserService) { }
-  
+categories:any=[]
+  constructor(private _user:UserService,private cat:CategoryService,private router:Router) { }
+  getCat(){
+    this.cat.getAllCat().subscribe((res)=>{
+      this.categories=res
+      console.log(this.categories)
+    },(error)=>{
+      console.log(error)
+    })
+  }
+  searshByName(Name:string){
+  this.cat.searchbyCat(Name).subscribe((res)=>{
+    this.router.navigateByUrl("/courses/{{name}}")
+     
+  })
+  }
   ngOnInit(): void {
     // console.log(this.userId)
+    this.getCat()
   }
 
 

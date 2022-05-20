@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
           'registration successfull',
           'success'
         )
-        localStorage.setItem('token',res.tokens[0])
+        localStorage.setItem('token',res.tokens)
       // console.log(res);
        localStorage.setItem('id',res._id)
        this.router.navigateByUrl('/home');
@@ -70,11 +70,12 @@ export class SigninComponent implements OnInit {
     this.user.password = password;
     this.auth.login(this.user).subscribe(
       (res: any) => { 
-        localStorage.setItem('token',res.tokens[0])
-        this.subscription = this.data.currentdata.subscribe(userinfo => this.user = userinfo)
+        console.log(res,"rggggggggwreg")
+        localStorage.setItem('token',res.tokens)
+       // this.subscription = this.data.currentdata.subscribe(userinfo => this.user = userinfo)
 
       console.log(res);
-      localStorage.setItem('id',res._id)
+     // localStorage.setItem('id',res._id)
              this.router.navigateByUrl('/home');
 
 

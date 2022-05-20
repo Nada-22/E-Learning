@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { Subscription } from 'rxjs';
 import { UserdataService } from 'src/app/services/userdata.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-header',
@@ -12,24 +13,31 @@ import { UserdataService } from 'src/app/services/userdata.service';
 })
 export class HeaderComponent implements OnInit {
     userId:any;
-    loguser=new User();
-
-  constructor(private _auth:AuthService,private _user:UserService,private data:UserdataService) { }
+    loguser: User={
+      name: '',
+      mail: '',
+      password: ''
+    };
+categories:any=[]
+  constructor(private _auth:AuthService,private _user:UserService,private data:UserdataService,private cat:CategoryService) { }
   ngOnInit(): void {
-      this.userId=localStorage.getItem('id');
+      this.userId=localStorage.getItem('token');
+      console.log(this.userId)
        this.getuser();
+       this.getCat()
     // this.usertoken();
   }
   subscription!: Subscription;
 
     getuser() {
     
-    this._user.getLoginUser(this.userId).subscribe(
+    this._user.getLoginUser().subscribe(
       (res: any) => { 
          console.log(res);
-         this.loguser.name=res.name;
-        this.loguser.mail = res.mail;
-        this.subscription = this.data.currentdata.subscribe(userinfo => this.loguser = userinfo)
+         
+         this.loguser=res;
+       // this.loguser.mail = res.mail;
+       // this.subscription = this.data.currentdata.subscribe(userinfo => this.loguser = userinfo)
 
       },
       (err: any) => { 
@@ -38,7 +46,15 @@ export class HeaderComponent implements OnInit {
       );
     // return this.loguser;
     }
-
+  
+    getCat(){
+      this.cat.getAllCat().subscribe((res)=>{
+        this.categories=res
+        console.log(this.categories)
+      },(error)=>{
+        console.log(error)
+      })
+    }
   
   usertoken() {
     return this._auth.getToken();

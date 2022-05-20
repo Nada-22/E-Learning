@@ -12,8 +12,8 @@ export class UserService {
    
     'Authorization': 'Bearer ' + localStorage.getItem('token'),
   });
-  getLoginUser(id: any) { 
-    return this._httpClient.get(this.url + `user/${id}`, { headers: this.headers});
+  getLoginUser() { 
+    return this._httpClient.get(this.url + "user/profile", { headers: this.headers});
   }
 
 }

@@ -10,6 +10,7 @@ import { Notfound404Component } from './componants/notfound404/notfound404.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenService } from './services/token.service';
 
 
 @NgModule({
@@ -26,7 +27,13 @@ Notfound404Component,
     AppRoutingModule,
     BrowserAnimationsModule,HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenService,
+      multi:true
+       }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
