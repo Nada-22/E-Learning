@@ -7,16 +7,13 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   url:string = 'http://localhost:3000/';
   constructor(private http:HttpClient) { }
-//  userdata: any;
 getToken(){
     return localStorage.getItem('token')
   }
   Signup(data: any) {
-    // this.userdata=data;
     return this.http.post(this.url + 'user/signup', data)
    }
   login(data: any) {
-    // this.userdata=data;
     return this.http.post(this.url+'user/login', data)    
  }
  logout(){

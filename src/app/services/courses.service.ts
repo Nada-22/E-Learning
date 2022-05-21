@@ -10,11 +10,14 @@ export class CoursesService {
   constructor(private http: HttpClient) { }
   
   headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+    'Authorization': 'Bearer '+localStorage.getItem('token')
   });
-  addusercourse(courseId: any) {
-    alert(courseId)
-    return this.http.post(this.url+"user/AddCourse",courseId ,{ headers: this.headers})
+  addusercourse(id:any) {
+    // alert(CourseID)
+    return this.http.post(this.url + 'user/AddCourse', {CourseID: id})
+    // return this.http.post(this.url+"user/AddCourse",courseId ,{ headers: this.headers})
   }
-
+  serchbycoursename() { 
+    return this.http.get(this.url + 'user/SearchByCourseName/css', { headers: this.headers})
+  }
 }
