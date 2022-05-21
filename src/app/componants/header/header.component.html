@@ -21,7 +21,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categorys</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a routerLink="courses/courseDetails" routerLinkActive="router-link-active"  class="dropdown-item" *ngFor="let item of categories">{{item}}</a>
+                        <a  routerLink="/courses/{{item}}" routerLinkActive="router-link-active"  class="dropdown-item" *ngFor="let item of categories">{{item}}</a>
                         
                     </div>
                 </div>

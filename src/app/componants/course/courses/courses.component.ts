@@ -9,7 +9,8 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CoursesComponent implements OnInit {
 categories:any=[]
-categoryname?:any=""
+  categoryname?: any = ""
+  Courses:any=[]
   constructor(private cat:CategoryService,private active:ActivatedRoute) { }
  
   ngOnInit(): void {
@@ -21,8 +22,11 @@ categoryname?:any=""
     )}
   searshByName(Name:string){
     this.cat.searchbyCat(Name).subscribe((res)=>{
-    console.log(res)
+      this.Courses=res
+      console.log(this.Courses)
        
+    }, (err) => { 
+      console.log(err)
     })
     }
 }
