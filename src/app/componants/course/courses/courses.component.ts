@@ -29,7 +29,7 @@ export class CoursesComponent implements OnInit {
     // this.usercourse()
     this._course.serchbycoursename().subscribe((res) => { 
       console.log(res);
-      alert(res)
+      // alert(res)
     }, (err) => {
       console.log(err);
       
