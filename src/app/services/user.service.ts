@@ -15,5 +15,8 @@ export class UserService {
   getLoginUser() { 
     return this._httpClient.get(this.url + "user/profile");
   }
+  getUser(id:any) { 
+    return this._httpClient.get(this.url + `user/${id}`,{'headers':this.headers});
+  }
 
 }

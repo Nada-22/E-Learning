@@ -15,4 +15,8 @@ export class ReviewService {
   addReview(review:any,id:any){
     return this._http.post(this.url+`user/addReview/${id}`,review,{ 'headers': this.headers })
   }
+
+  showCommints(id:any){
+    return this._http.get(this.url+`user/getCourseReviews/${id}`,{'headers':this.headers})
+  }
 }
