@@ -15,10 +15,12 @@ export class CoursesComponent implements OnInit {
   categoryname?: any = ""
   Courses:any
   file!: string;
+  imageNotfound:boolean=false
   // abstract sanitize(context: SecurityContext, value: string | SafeValue): string | null
   // abstract bypassSecurityTrustUrl(value: string): SafeUrl
 
-  constructor(private cat:CategoryService,private active:ActivatedRoute,private _course:CoursesService,private router:Router) { }
+  constructor(private cat: CategoryService, private active: ActivatedRoute, private _course: CoursesService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe(params => {
@@ -40,8 +42,13 @@ export class CoursesComponent implements OnInit {
       this.Courses=res
       console.log(this.Courses)
       for(let i=0;i<this.Courses.length;i++){
+       console.log(this.Courses[i].image)
        
-      //  console.log(this.Courses[i].image);
+        if (this.Courses[i].image.length == 12) {
+          this.Courses[i].image = null;
+      
+       
+     }
 //  let  objectURL = 'data:image/jpeg;base64,' +this.Courses[i].image= this.sanitize.bypassSecurityTrustUrl(objectURL)
       }   
     }, (err) => { 
@@ -54,10 +61,9 @@ export class CoursesComponent implements OnInit {
     
     this._course.addusercourse(this.course.CourseID).subscribe((res)=>{
       console.log(res)
-      // alert(this.course.CourseID)      
+      this.router.navigateByUrl(`/courses/courseContent/${this.course.CourseID}`)
     }, (err) => { 
       console.log(err)
-      // alert(this.course.CourseID)
     })
   }
 

@@ -10,19 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CourseContentComponent } from './course-content/course-content.component'; 
 
 export const routes: Routes = [
-  { path: '', component: CoursesComponent },
+  // { path: '', component: CoursesComponent },
   { path: 'courseDetails/:cId', component: CourseDetailsComponent },
+  {path:'courseContent/:id',component:CourseContentComponent},
   { path: ':name', component: CoursesComponent },
   // { path: 'courseContent', component: CourseContentComponent }
   
-    {path:'courseDetails/:cId',
-    children: [
-    {path:'courseContent',component:CourseContentComponent}
-    
-
-
-  ]
-},
+    // {path:'courseDetails/:cId',
+    // children: []
+// },
 
 ]
 @NgModule({

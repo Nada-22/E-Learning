@@ -30,10 +30,7 @@ export class CourseDetailsComponent implements OnInit {
     this.formReview=this._formBuilder.group({
       comment:['',[Validators.required]],
     });
-    this.commintShow();
-    // this.addCommint();
-    // console.log(this.courseId);
-    
+    this.commintShow(); 
   }
   commintShow(){
     this.review.showCommints(this.courseId).subscribe((res)=>{
