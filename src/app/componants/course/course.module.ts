@@ -5,17 +5,17 @@ import { CoursesComponent } from './courses/courses.component';
 
 import { Routes, RouterModule } from '@angular/router';
 import { CourseDetailsComponent } from './course-details/course-details.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
  import {MatTabsModule} from '@angular/material/tabs';
 import { CourseContentComponent } from './course-content/course-content.component'; 
 
 export const routes: Routes = [
   { path: '', component: CoursesComponent },
-  { path: 'courseDetails', component: CourseDetailsComponent },
+  { path: 'courseDetails/:cId', component: CourseDetailsComponent },
   { path: ':name', component: CoursesComponent },
   // { path: 'courseContent', component: CourseContentComponent }
   
-    {path:'courseDetails',
+    {path:'courseDetails/:cId',
     children: [
     {path:'courseContent',component:CourseContentComponent}
     
@@ -32,7 +32,7 @@ export const routes: Routes = [
     CourseContentComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),MatTabsModule
+    CommonModule,RouterModule.forChild(routes),MatTabsModule,ReactiveFormsModule 
   ]
 })
 export class CourseModule { }

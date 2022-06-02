@@ -8,8 +8,8 @@
         <mat-tab-group class="mt-4 mb-5">
           <mat-tab label="Comments">
             <div class="comments-area">
-              <h4>05 Comments</h4>
-              <div class="comment-list">
+              <h4>{{comments.length}} Comments</h4>
+              <div class="comment-list" >
                 <div class="single-comment justify-content-between d-flex">
                   <div class="user justify-content-between d-flex">
                     <div class="thumb">
@@ -19,7 +19,7 @@
                       <h5><a href="#">Emilly Blunt</a></h5>
                       <p class="date">December 4, 2017 at 3:12 pm </p>
                       <p class="comment">
-                        Never say goodbye till the end comes!
+                        <!-- {{commint.comment}} -->
                       </p>
                     </div>
                   </div>
@@ -28,7 +28,7 @@
                   </div>
                 </div>
               </div>
-              <div class="comment-list left-padding">
+              <!-- <div class="comment-list left-padding">
                 <div class="single-comment justify-content-between d-flex">
                   <div class="user justify-content-between d-flex">
                     <div class="thumb">
@@ -46,31 +46,13 @@
                     <a href="" class="btn-reply text-uppercase">reply</a>
                   </div>
                 </div>
-              </div>
-              <div class="comment-list">
-                <div class="single-comment justify-content-between d-flex">
-                  <div class="user justify-content-between d-flex">
-                    <div class="thumb">
-                      <img src="../../../../assets/img/c3.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                      <h5><a href="#">Ina Hayes</a></h5>
-                      <p class="date">December 4, 2017 at 3:12 pm </p>
-                      <p class="comment">
-                        Never say goodbye till the end comes!
-                      </p>
-                    </div>
-                  </div>
-                  <div class="reply-btn">
-                    <a href="" class="btn-reply text-uppercase">reply</a>
-                  </div>
-                </div>
-              </div>
+              </div> -->
+              
             </div>
             <div class="comment-form">
               <h4>Leave a Reply</h4>
-              <form>
-                <div class="form-group d-flex">
+              <form [formGroup]="formReview" (ngSubmit)="addCommint()">
+                <!-- <div class="form-group d-flex">
                   <div class="form-group col-lg-5 col-md-5 name me-3">
                     <input type="text" class="form-control" id="name" placeholder="Enter Name"
                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
@@ -83,12 +65,12 @@
                 <div class="form-group mt-3">
                   <input type="text" class="form-control" id="subject" placeholder="Subject"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-                </div>
+                </div> -->
                 <div class="form-group mt-3">
-                  <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
+                  <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"  formControlName="comment"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
                 </div>
-                <a href="#" class="primary-btn submit_btn mt-3">Post Comment</a>
+                <button type="submit" class="primary-btn submit_btn mt-3">Post Comment</button>
               </form>
             </div>
           </mat-tab>
