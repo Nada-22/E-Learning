@@ -41,7 +41,7 @@ export class CoursesComponent implements OnInit {
       console.log(this.Courses)
       for(let i=0;i<this.Courses.length;i++){
        
-       console.log(this.Courses[i].image);
+      //  console.log(this.Courses[i].image);
 //  let  objectURL = 'data:image/jpeg;base64,' +this.Courses[i].image= this.sanitize.bypassSecurityTrustUrl(objectURL)
       }   
     }, (err) => { 
