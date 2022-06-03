@@ -11,18 +11,22 @@ import { DetailsComponent } from './details/details.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
 import { ConnectionsComponent } from './connections/connections.component';
 import { MainComponent } from './main/main.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import { SummaryComponent } from './summary/summary.component';
 
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   // { path: 'dashboard', component: DashboardComponent },
   {path:'', component: DashboardComponent,
     children: [
-    {path:'dashBoard',component:MainComponent},
+    {path:'dashBoard',component:SummaryComponent},
     {path:'general',component:GeneralComponent},
     {path:'changPassword',component:ChangPassComponent},
     {path:'details',component:DetailsComponent},
     {path:'social',component:SocialLinksComponent},
-    {path:'conections',component:ConnectionsComponent},
+      { path: 'conections', component: ConnectionsComponent },
+      { path: 'courses', component: MainComponent },
 
 
   ]
@@ -37,10 +41,11 @@ export const routes: Routes = [
     DetailsComponent,
     SocialLinksComponent,
     ConnectionsComponent,
-    MainComponent
+    MainComponent,
+    SummaryComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes),MatCardModule,MatButtonModule
   ]
 })
 export class UserModule { }

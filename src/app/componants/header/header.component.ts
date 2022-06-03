@@ -13,11 +13,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class HeaderComponent implements OnInit {
     userId:any;
-    loguser: User={
-      name: '',
-      mail: '',
-      password: ''
-    };
+    loguser=new User();
 categories:any=[]
   constructor(private _auth:AuthService,private _user:UserService,private data:UserdataService,private cat:CategoryService) { }
   ngOnInit(): void {
@@ -30,11 +26,9 @@ categories:any=[]
   subscription!: Subscription;
 
     getuser() {
-    
     this._user.getLoginUser().subscribe(
       (res: any) => { 
-         console.log(res);
-         
+         console.log(res);  
          this.loguser=res;
        // this.loguser.mail = res.mail;
        // this.subscription = this.data.currentdata.subscribe(userinfo => this.loguser = userinfo)
@@ -48,10 +42,10 @@ categories:any=[]
     }
   
     getCat(){
-      this.cat.getAllCat().subscribe((res)=>{
+      this.cat.getAllCat().subscribe((res:any)=>{
         this.categories=res
         console.log(this.categories)
-      },(error)=>{
+      },(error:any)=>{
         console.log(error)
       })
     }
