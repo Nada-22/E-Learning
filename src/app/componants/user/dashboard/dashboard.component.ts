@@ -17,14 +17,13 @@ export class DashboardComponent implements OnInit {
     this.getuser();
   }
   logout(){
-    this.service.logout().subscribe((res)=>{
+    this.service.logout().subscribe((res:any)=>{
       console.log("done")
       localStorage.removeItem('token');
-      localStorage.removeItem('id');
       this.router.navigateByUrl('/user/signin');
 
     },
-    (error)=>{
+    (error:any)=>{
       console.log(error)
     })
     

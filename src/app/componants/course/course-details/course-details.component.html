@@ -3,12 +3,12 @@
     <div class="row course_details_inner">
       <div class="col-lg-8">
         <div class="c_details_img">
-          <img class="img-fluid" src="../../../../assets/img/course-details.jpg" alt="">
+          <img class="img-fluid" src="data:image/jpg;base64,{{course.image}}" alt="">
         </div>
         <mat-tab-group class="mt-4 mb-5">
           <mat-tab label="Comments">
             <div class="comments-area">
-              <h4>{{comments.length}} Comments</h4>
+              <h4> Comments</h4>
               <div class="comment-list" >
                 <div class="single-comment justify-content-between d-flex">
                   <div class="user justify-content-between d-flex">
@@ -77,59 +77,20 @@
           <mat-tab label="Course Outline">
             <div class="comments-area">
               <div class="objctive_text">
-                <ul class="list" style="color:#777777 !important;">
-                  <li class="mb-3"><a href="#" class="link-info">Introduction Lesson</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Basics of HTML</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Getting Know about HTML 5</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Tags and Attributes</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Basics of CSS</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Getting Familiar with CSS 3</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Introduction to Bootstrap 3.0</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Responsive Design</a></li>
-                  <li class="mb-3"><a href="#" class="link-info">Canvas in HTML 5</a></li>
+                <ul class="list" style="color:#777777 !important;"*ngFor="let item of course.playlist">
+                  <li class="mb-3"><a href="#" class="link-info" >{{item.linkName}}</a></li>
+                 
+                  
                 </ul>
               </div>
             </div>
 
           </mat-tab>
-          <mat-tab label="Eligibility">
-            <div class="comments-area">
-              <div class="objctive_text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                  et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodo</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                  et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
-              </div>
-            </div>
-
-          </mat-tab>
+        
           <mat-tab label="Objectives">
             <div class="comments-area">
               <div class="objctive_text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                  et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodo</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                  et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Lorem
-                  ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                <p>{{course.description}}</p>
               </div>
             </div>
 
@@ -141,12 +102,12 @@
       <div class="col-lg-4">
         <div class="c_details_list">
           <ul class="list">
-            <li><a href="#" >Trainer’s Name <span class="colo">George Mathews</span></a></li>
-            <li><a href="#">Course Fee <span>$230</span></a></li>
-            <li><a href="#">Available Seats <span>15</span></a></li>
-            <li><a href="#">Schedule <span>2.00 pm to 4.00 pm</span></a></li>
+            <li><a href="#" >Trainer’s Name <span class="colo">{{course.instructor}}</span></a></li>
+            <li><a href="#">Numbers of Student <span>{{course.noStudents}}</span></a></li>
+            <li><a href="#">Rate <span>{{course.noRates}}</span></a></li>
+            <li><a href="#">Time of Publish <span>{{course.createdAt|date}}</span></a></li>
           </ul>
-          <a class="main_btn btn btn-primary" routerLink="courseContent">Enroll the Course</a>
+          <a class="main_btn btn btn-primary"(click)="enrollCourse(course._id)">Enroll the Course</a>
         </div>
       </div>
     </div>

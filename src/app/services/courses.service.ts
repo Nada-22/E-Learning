@@ -13,11 +13,15 @@ export class CoursesService {
     'Authorization': 'Bearer '+localStorage.getItem('token')
   });
   addusercourse(id:any) {
-    // alert(CourseID)
     return this.http.post(this.url + 'user/AddCourse', {CourseID: id})
-    // return this.http.post(this.url+"user/AddCourse",courseId ,{ headers: this.headers})
   }
   serchbycoursename() { 
     return this.http.get(this.url + 'user/SearchByCourseName/css', { headers: this.headers})
+  }
+  getTopCourses() {
+    return this.http.get(this.url + 'course/topRate')
+  }
+  CourseDetails(id:string) {
+    return this.http.get(this.url + 'user/SearchByCourseID/'+id)
   }
 }

@@ -47,11 +47,11 @@ export class SigninComponent implements OnInit {
 
       }, (error: any) => { 
         console.log(error);
-        console.log(error.error.errors.message);
+        // console.log(error.error.errors.message);
         
       for (const err in error.error.errors) {
       //   for (let i = 0; i < error.error.errors.length; i++) {
-        console.log(error.error.errors[err].message);
+        // console.log(error.error.errors[err].message);
         Swal.fire(
           'Failed!',
           error.error.errors[err].message,

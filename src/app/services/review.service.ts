@@ -13,10 +13,10 @@ export class ReviewService {
   constructor(private _http:HttpClient) { }
 
   addReview(review:any,id:any){
-    return this._http.post(this.url+`user/addReview/${id}`,review,{ 'headers': this.headers })
+    return this._http.post(this.url+`user/addReview/${id}`,review)
   }
 
   showCommints(id:any){
-    return this._http.get(this.url+`user/getCourseReviews/${id}`,{'headers':this.headers})
+    return this._http.get(this.url+`user/getCourseReviews/${id}`)
   }
 }

@@ -1,3 +1,4 @@
+import { CoursesService } from 'src/app/services/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {  } from 'ngx-owl-carousel-o';
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent implements OnInit {
 userId:any;
 categories:any=[]
-  constructor(private _user:UserService,private cat:CategoryService,private router:Router) { }
+  constructor(private _user:UserService,private cat:CategoryService,private router:Router,private _courses:CoursesService) { }
   getCat(){
     this.cat.getAllCat().subscribe((res)=>{
       this.categories=res
@@ -29,9 +30,20 @@ categories:any=[]
   }
   ngOnInit(): void {
     // console.log(this.userId)
-    this.getCat()
+    this.getCat();
+    this.getTop3Courses();
   }
 
+  getTop3Courses() {
+    this._courses.getTopCourses().subscribe((res: any) => {
+      console.log(res)
+    
+     }
+      , (error:any) => { 
 
+        console.log(error);
+        
+      })
+}
 
 }
