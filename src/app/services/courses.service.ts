@@ -20,4 +20,8 @@ export class CoursesService {
   serchbycoursename() { 
     return this.http.get(this.url + 'user/SearchByCourseName/css', { headers: this.headers})
   }
+  getCoursePlaylist(id:any){
+    return this.http.get(this.url+`user/SearchByCourseplaylist/${id}`)
+  }
+
 }

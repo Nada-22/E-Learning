@@ -16,8 +16,8 @@ export const routes: Routes = [
   { path: ':name', component: CoursesComponent },
   // { path: 'courseContent', component: CourseContentComponent }
   
-    // {path:'courseDetails/:cId',
-    // children: []
+//     {path:'courseDetails/:cId',
+//     children: [{ path: 'courseContent', component: CourseContentComponent }]
 // },
 
 ]
