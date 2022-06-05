@@ -24,4 +24,8 @@ export class CoursesService {
   CourseDetails(id:string) {
     return this.http.get(this.url + 'user/SearchByCourseID/'+id)
   }
+  getCoursePlaylist(id:any){
+    return this.http.get(this.url+`user/SearchByCourseplaylist/${id}`)
+  }
+
 }
