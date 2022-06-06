@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { CoursesService } from 'src/app/services/courses.service';
 import { SafeScript, SafeUrl, SafeValue } from '@angular/platform-browser';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
@@ -59,11 +59,27 @@ export class CoursesComponent implements OnInit {
   usercourse(courseId:any) { 
     this.course.CourseID = courseId;
     
-    this._course.addusercourse(this.course.CourseID).subscribe((res)=>{
+    this._course.addusercourse(this.course.CourseID).subscribe((res:any)=>{
       console.log(res)
       this.router.navigateByUrl(`/courses/courseContent/${this.course.CourseID}`)
-    }, (err) => { 
-      console.log(err)
+    }, (err:any) => { 
+      console.log(err.error.text)
+      if (err.error.text == "COURSE ALREADY EXISTS !!") {
+        //swall
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops...',
+          text: 'You already added this course',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Go to the Course',
+         }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigateByUrl(`/courses/courseContent/${this.course.CourseID}`)
+         }
+        })
+      }
     })
   }
 

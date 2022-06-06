@@ -5,7 +5,7 @@ import {  } from 'ngx-owl-carousel-o';
 import { CategoryService } from 'src/app/services/category.service';
 import { UserService } from 'src/app/services/user.service';
 import { Course } from 'src/app/models/course';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 userId:any;
   categories: any = []
   courses: Course[]=[]
-  constructor(private _user:UserService,private cat:CategoryService,private router:Router,private _courses:CoursesService) { }
+  constructor(private _user:UserService,private cat:CategoryService,private router:Router,private _course:CoursesService) { }
   getCat(){
     this.cat.getAllCat().subscribe((res)=>{
       this.categories=res
@@ -37,7 +37,7 @@ userId:any;
   }
 
   getTop3Courses() {
-    this._courses.getTopCourses().subscribe((res: any) => {
+    this._course.getTopCourses().subscribe((res: any) => {
       this.courses = res
       console.log(this.courses)
       console.log("sss");
@@ -50,5 +50,28 @@ userId:any;
         
       })
 }
-
+enrollCourse(courseId:any) {     
+  this._course.addusercourse(courseId).subscribe((res:any)=>{
+    console.log(res)
+    this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
+  }, (err:any) => { 
+    console.log(err.error.text)
+    if (err.error.text == "COURSE ALREADY EXISTS !!") {
+      //swall
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'You already added this course',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Go to the Course',
+       }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
+       }
+      })
+    }
+  })
+}
 }

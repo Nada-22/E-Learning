@@ -7,7 +7,7 @@ import { ReviewService } from 'src/app/services/review.service';
 import { Comment } from 'src/app/models/comment';
 import { UserService } from 'src/app/services/user.service';
 import { Course } from 'src/app/models/course';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-course-details',
@@ -23,7 +23,7 @@ export class CourseDetailsComponent implements OnInit {
   userName:any;
   course= new Course();
   constructor(private user: UserService, private active: ActivatedRoute,
-    private review: ReviewService, private _formBuilder: FormBuilder, private courses: CoursesService,
+    private review: ReviewService, private _formBuilder: FormBuilder, private _course: CoursesService,
   private router:Router) { }
 
   ngOnInit(): void {
@@ -87,7 +87,7 @@ export class CourseDetailsComponent implements OnInit {
 
   }
   courseDetails(courseid:string) {
-    this.courses.CourseDetails(courseid).subscribe(
+    this._course.CourseDetails(courseid).subscribe(
       (res: any) => {
         this.course = res;
         console.log(this.course);
@@ -96,14 +96,28 @@ export class CourseDetailsComponent implements OnInit {
         console.log(error);
        })
   }
-  enrollCourse(courseID: string) { 
-    
-    this.user.getUserCourse(courseID);
-    // this.courses.addusercourse(courseID).subscribe((res:any)=>{
-    //   console.log(res)
-    //   this.router.navigateByUrl(`/courses/courseContent/${courseID}`)
-    // }, (err:any) => { 
-    //   console.log(err)
-    // })
+  enrollCourse(courseId:any) {     
+    this._course.addusercourse(courseId).subscribe((res:any)=>{
+      console.log(res)
+      this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
+    }, (err:any) => { 
+      console.log(err.error.text)
+      if (err.error.text == "COURSE ALREADY EXISTS !!") {
+        //swall
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops...',
+          text: 'You already added this course',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Go to the Course',
+         }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
+         }
+        })
+      }
+    })
   }
 }
