@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {  } from 'ngx-owl-carousel-o';
 import { CategoryService } from 'src/app/services/category.service';
 import { UserService } from 'src/app/services/user.service';
+import { Course } from 'src/app/models/course';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
 userId:any;
-categories:any=[]
+  categories: any = []
+  courses: Course[]=[]
   constructor(private _user:UserService,private cat:CategoryService,private router:Router,private _courses:CoursesService) { }
   getCat(){
     this.cat.getAllCat().subscribe((res)=>{
@@ -36,7 +38,10 @@ categories:any=[]
 
   getTop3Courses() {
     this._courses.getTopCourses().subscribe((res: any) => {
-      console.log(res)
+      this.courses = res
+      console.log(this.courses)
+      console.log("sss");
+      
     
      }
       , (error:any) => { 
