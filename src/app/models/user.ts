@@ -5,4 +5,7 @@ export class User{
     password!: string;
     phone!: number;
     Courses: any = [];
+    avatar!: string;
+    birthdate!: Date;
+    country!: string;
 }

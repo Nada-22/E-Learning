@@ -70,7 +70,7 @@ export class SigninComponent implements OnInit {
     this.user.password = password;
     this.auth.login(this.user).subscribe(
       (res: any) => { 
-        console.log(res,"rggggggggwreg")
+      
         localStorage.setItem('token',res.tokens)
        // this.subscription = this.data.currentdata.subscribe(userinfo => this.user = userinfo)
 

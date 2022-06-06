@@ -1,8 +1,8 @@
    <div class="container">
-       <div class="user-avatar m-5" style="text-align: center;">
-          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" style="border-radius: 50%; margin-left:2rem;" width="150px" alt="Maxwell Admin">
-          <input type="file" accept="image/png, image/jpeg">
-        </div>
+       <!-- <div class="user-avatar m-5" style="text-align: center;">
+          <img src="data:image/jpg;base64,{{user.avatar}}" style="border-radius: 50%; margin-left:2rem;" width="150px" alt="Maxwell Admin">
+          <input type="file" (change)="handelUpload($event)"(change)="updateUser(user)"  accept="image/*">
+        </div> -->
         <div class="d-flex justify-content-center mt-5">
 
             <div class="col-4">
@@ -19,4 +19,4 @@
             </div> -->
         </div>
    </div>
-   
+   <!-- <button (click)="updateUser(user)"> save</button> -->

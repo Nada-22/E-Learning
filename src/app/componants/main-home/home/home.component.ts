@@ -50,11 +50,14 @@ userId:any;
         
       })
 }
-enrollCourse(courseId:any) {     
+  enrollCourse(courseId: any) {   
+
   this._course.addusercourse(courseId).subscribe((res:any)=>{
     console.log(res)
     this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
-  }, (err:any) => { 
+  }, (err: any) => { 
+    console.log(err);
+    
     console.log(err.error.text)
     if (err.error.text == "COURSE ALREADY EXISTS !!") {
       //swall

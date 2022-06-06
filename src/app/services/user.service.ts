@@ -17,5 +17,10 @@ export class UserService {
   getUser(id:any) { 
     return this._httpClient.get(this.url + `user/${id}`);
   }
-
+  updateUser(data:any) {
+  return this._httpClient.patch(this.url + "user/update",data);
+  }
+  addImage(data:any){
+    return this._httpClient.patch(this.url+'user/update',data)
+  }
 }

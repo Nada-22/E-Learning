@@ -14,7 +14,7 @@ export class CoursesComponent implements OnInit {
   categories:any=[]
   categoryname?: any = ""
   Courses:any
-  file!: string;
+ 
   imageNotfound:boolean=false
   // abstract sanitize(context: SecurityContext, value: string | SafeValue): string | null
   // abstract bypassSecurityTrustUrl(value: string): SafeUrl
@@ -83,8 +83,5 @@ export class CoursesComponent implements OnInit {
     })
   }
 
-  handelUpload(event:any){
-    console.log(event)
-    this.file=event.target.files
-  }
+
 }
