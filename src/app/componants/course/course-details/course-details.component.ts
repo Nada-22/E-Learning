@@ -18,7 +18,7 @@ export class CourseDetailsComponent implements OnInit {
   courseComments = new Comment();
   courseId:any;
   formReview=new FormGroup({});
-  comments:any[]=[];
+  comments :Comment[]=[];
   reviews:Comment[]=[];
   userName:any;
   course= new Course();
@@ -40,31 +40,10 @@ export class CourseDetailsComponent implements OnInit {
   }
   commintShow(){
     this.review.showCommints(this.courseId).subscribe((res:any)=>{
-      // this.comments=res;
+      this.comments=res;
       console.log(res);
      
-      for (let i  in res) {
-        this.courseComments.comment = res[i].comment;
-        this.courseComments.UserID = res[i].UserID;
-        // console.log(res[i].UserID);
-        // this.user.getUser(res[i].UserID).subscribe(
-        //   (res: any) =>
-        //   {
-        //     console.log(res);
-        //     this.courseComments.userName = res.name;
-        //     this.courseComments.mail = res.mail;
-        //     // this.comments.push(this.courseComments);
-        //     console.log(this.courseComments);
-            
-        //   }
-        //   , (error: any) => {console.log(error); }
-        //   )
-        console.log(this.courseComments);
-        this.comments.push(this.courseComments);
-        // this.comments.push(this.courseComments.comment);
-
-
-      }
+   
       
       console.log(this.comments);
     },

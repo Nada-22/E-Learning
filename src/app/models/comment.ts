@@ -1,8 +1,12 @@
 export class Comment{
     UserID!:string;
-    userName !: string;
+    UserName !: string;
     mail !: string;
     comment!: string;
     courseID!: string;
     _id!: string;
+    createdAt!: Date;
+    UserImage!:string;
+
+
 }
