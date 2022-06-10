@@ -20,6 +20,9 @@ export class UserService {
   updateUser(data:any) {
   return this._httpClient.patch(this.url + "user/update",data);
   }
+  SocialLins(data:any) {
+    return this._httpClient.patch(this.url + "user/update",{socialLinks:data});
+    }
   addImage(data:any){
     return this._httpClient.patch(this.url+'user/update',data)
   }

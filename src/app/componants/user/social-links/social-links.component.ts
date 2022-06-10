@@ -11,6 +11,7 @@ export class SocialLinksComponent implements OnInit {
 
   constructor(private _user:UserService,private FB:FormBuilder) { }
   user = new User();
+  loginUser=new User();
   social:any = [];
   socialLinks = new FormGroup({});
   ngOnInit(): void {
@@ -23,12 +24,17 @@ export class SocialLinksComponent implements OnInit {
   
 
     })
-
+    this.getuser();
   }
   addSocialLinks(data:any) {
-   
+    this.user.socialLinks[0].Twitter = data.Twitter;
+    this.user.socialLinks[1].Facebook = data.Facebook;
+    this.user.socialLinks[2].Google = data.Google;
+    this.user.socialLinks[3].LinkedIn = data.LinkedIn;
+    this.user.socialLinks[4].GitHub = data.GitHub;
+    console.log(this.user.socialLinks);
     
-    this._user.updateUser(data).subscribe(
+    this._user.SocialLins(this.user.socialLinks).subscribe(
       (res: any) => {
         // this.user.socialLinks = res.socialLinks;
         console.log(res)
@@ -38,6 +44,16 @@ export class SocialLinksComponent implements OnInit {
         console.log(err)
       }
     )
+  
+  }
+  getuser() {
+    this._user.getLoginUser().subscribe((res:any) => {
+      this.loginUser.socialLinks = res.socialLinks;
+      console.log(this.loginUser.socialLinks);
+    },
+      (error:any) => {
+        console.log(error);
+      });
   
 }
 }

@@ -9,9 +9,5 @@ export class User{
     birthdate!: any;
     country!: string;
     socialLinks = [{Twitter:""}, {Facebook:""},{Google:""},{LinkedIn:""},{GitHub:""}];
-    Twitter!: any;
-    Facebook!: string;
-    Google!: string;
-    LinkedIn!: string;
-    GitHub!: string;
+  
 }
