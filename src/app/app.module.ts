@@ -17,7 +17,7 @@ import { TokenService } from './services/token.service';
   declarations: [
     AppComponent,
     HeaderComponent,
-Notfound404Component,
+    Notfound404Component,
     FooterComponent,
     MainlayoutComponent,
     

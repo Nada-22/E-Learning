@@ -39,13 +39,14 @@ export class GeneralComponent implements OnInit {
   isControlHasError(name: string, error: string): boolean {
     return this.userform.controls[name].invalid && this.userform.controls[name].errors?.[error];
   }
-  updateUser() {
-    this.user = JSON.parse(JSON.stringify(this.userform.value))
+  updateUser(): void {
+    this.user =this.userform.value
     console.log(this.user);  
     this._user.updateUser(this.user).subscribe({
       next:(res:any)=>{
         this.addImage()
-        this.router.navigateByUrl('/user/dashBoard')
+        this.getuser();
+        // this.router.navigateByUrl('/user/dashBoard')
       }
     })
   }
@@ -70,7 +71,5 @@ export class GeneralComponent implements OnInit {
       });
   
   }
-  test() {
-    alert(JSON.stringify(this.userform.value));
-  }
+ 
 }

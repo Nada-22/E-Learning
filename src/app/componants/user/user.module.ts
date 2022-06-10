@@ -13,13 +13,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { SummaryComponent } from './summary/summary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   // { path: 'dashboard', component: DashboardComponent },
   {path:'', component: DashboardComponent,
     children: [
-    {path:'dashBoard',component:SummaryComponent},
+    {path:'dashBoard',component:MainComponent},
     {path:'general',component:GeneralComponent},
     {path:'changPassword',component:ChangPassComponent},
     {path:'details',component:DetailsComponent},
@@ -33,19 +33,24 @@ export const routes: Routes = [
 ]
 @NgModule({
   declarations: [
+    MainComponent,
     SigninComponent,
-    DashboardComponent,
-    GeneralComponent,
-    ChangPassComponent,
     DetailsComponent,
+    GeneralComponent,
+    SummaryComponent,
+    ChangPassComponent,
+    DashboardComponent,
     SocialLinksComponent,
     ConnectionsComponent,
-    MainComponent,
-    SummaryComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),MatCardModule,MatButtonModule,FormsModule,
+    FormsModule,
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
     ReactiveFormsModule,
+    RouterModule.forChild(routes),
+    NgxPaginationModule
   ]
 })
 export class UserModule { }

@@ -27,5 +27,8 @@ export class CoursesService {
   getCoursePlaylist(id:any){
     return this.http.get(this.url+`user/SearchByCourseplaylist/${id}`)
   }
-
+  getUserCourses() {
+    return this.http.get(this.url + 'user/getallcourses')
+  
+}
 }

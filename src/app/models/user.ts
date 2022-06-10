@@ -6,6 +6,12 @@ export class User{
     phone!: number;
     Courses: any = [];
     avatar!: string;
-    birthdate!: Date;
+    birthdate!: any;
     country!: string;
+    socialLinks = [{Twitter:""}, {Facebook:""},{Google:""},{LinkedIn:""},{GitHub:""}];
+    Twitter!: any;
+    Facebook!: string;
+    Google!: string;
+    LinkedIn!: string;
+    GitHub!: string;
 }
