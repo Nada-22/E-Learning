@@ -6,7 +6,8 @@ export class Comment{
     courseID!: string;
     _id!: string;
     createdAt!: Date;
-    UserImage!:string;
+    UserImage!:any;
+    arr:any[]=[{UserName:"",UserImage:"",comment:""}]
 
 
 }
