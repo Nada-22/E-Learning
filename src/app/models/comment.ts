@@ -7,6 +7,7 @@ export class Comment{
     _id!: string;
     createdAt!: Date;
     UserImage!:any;
+    arr:any[]=[{UserName:"",UserImage:"",comment:""}]
 
 
 }

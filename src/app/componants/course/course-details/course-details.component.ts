@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Course } from 'src/app/models/course';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.component.html',
@@ -21,6 +22,9 @@ export class CourseDetailsComponent implements OnInit {
   comments :Comment[]=[];
   reviews:Comment[]=[];
   userName:any;
+  commentUser:any=[]
+  new:any=[]
+  userComment=new Comment();
   course= new Course();
   constructor(private user: UserService, private active: ActivatedRoute,
     private review: ReviewService, private _formBuilder: FormBuilder, private _course: CoursesService,
@@ -41,11 +45,31 @@ export class CourseDetailsComponent implements OnInit {
   commintShow(){
     this.review.showCommints(this.courseId).subscribe((res:any)=>{
       this.comments=res;
-      console.log(res);
-     
+for(let i=0;i<this.comments.length;i++){
+  this.comments[i].UserID
+  //this.commentUser.push(this.comments[i].comment)
+  this.user.getUser(this.comments[i].UserID).subscribe((res:any)=>{
+  //  console.log(res.name,res.avatar)
+  
+  this.userComment.UserName=(res.name)
+  this.userComment.UserImage=(res.avatar)
+  this.userComment.comment=(this.comments[i].comment)
+    this.commentUser[i]=this.userComment
+
+   this.new.push(this.commentUser[i])
+   
+   //console.log(this.commentUser[i])
+   
+
+  },(error:any)=>{
+ 
+  })
+  
+}
+console.log(this.new )
    
       
-      console.log(this.comments);
+     // console.log(this.comments);
     },
       (err: any) =>
       {
