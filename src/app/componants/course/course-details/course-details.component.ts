@@ -28,6 +28,7 @@ export class CourseDetailsComponent implements OnInit {
   userComment=new Comment();
   course = new Course();
   newArry: Comments[]=[];
+  rate!:number
   
   constructor(private user: UserService, private active: ActivatedRoute,
     private review: ReviewService, private _formBuilder: FormBuilder, private _course: CoursesService,
@@ -101,6 +102,21 @@ export class CourseDetailsComponent implements OnInit {
         console.log(error);
        })
   }
+
+  onRate(newRate:any){
+    this.rate=newRate;
+    alert(this.rate)
+
+    // this.review.addRate(this.rate,this.courseId).subscribe((res:any)=>{
+    //   console.log(res);
+    // },(err:any)=>{
+    //   console.log(err)
+    // }
+    // )
+    
+    
+  }
+
   enrollCourse(courseId:any) {     
     this._course.addusercourse(courseId).subscribe((res:any)=>{
       console.log(res)
