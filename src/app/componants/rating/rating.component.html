@@ -1,1 +1,1 @@
-<span class="fa fa-star checked" *ngFor="let item of stars"></span>
+<span class="fa fa-star" *ngFor="let item of stars ;let currentIndex=index" [class.checked]="rate>currentIndex"></span>

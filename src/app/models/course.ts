@@ -11,6 +11,7 @@ export class Course{
     noRates!: number;
     createdAt!: Date;
     _id!: string;
+    courseRate!:number;
     
 
 }

@@ -52,7 +52,7 @@ export class CourseDetailsComponent implements OnInit {
       
       for (let i = 0; i < this.comments.length; i++) { 
         let id = this.comments[i].UserID;
-        this.user.getUser(id).subscribe((res: any) => {       
+        this.user.getUser(id).subscribe((res: any) => {   
         let  newobj:Comments = {
           UserName: res.name,
           comment: this.comments[i].comment,
@@ -62,7 +62,7 @@ export class CourseDetailsComponent implements OnInit {
           // console.log(newobj);
           this.newArry.push(newobj);
           // console.log(this.newArry);
-         
+         console.log(res)
         }
         ,(err:any)=>{
           console.log(err)
