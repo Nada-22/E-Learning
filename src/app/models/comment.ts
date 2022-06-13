@@ -1,4 +1,5 @@
 export class Comment{
+   
     UserID!:string;
     UserName !: string;
     mail !: string;
@@ -7,7 +8,7 @@ export class Comment{
     _id!: string;
     createdAt!: Date;
     UserImage!:any;
-    arr:any[]=[{UserName:"",UserImage:"",comment:""}]
+    arr: any[] = [{}];
 
 
 }

@@ -1,3 +1,4 @@
+import { Comments } from './../../../models/comments';
 import { CoursesService } from 'src/app/services/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -20,12 +21,14 @@ export class CourseDetailsComponent implements OnInit {
   courseId:any;
   formReview=new FormGroup({});
   comments :Comment[]=[];
-  reviews:Comment[]=[];
+  reviews=new Comment();
   userName:any;
-  commentUser:any=[]
+  commentUser: any[] = [];
   new:any=[]
   userComment=new Comment();
-  course= new Course();
+  course = new Course();
+  newArry: Comments[]=[];
+  
   constructor(private user: UserService, private active: ActivatedRoute,
     private review: ReviewService, private _formBuilder: FormBuilder, private _course: CoursesService,
   private router:Router) { }
@@ -44,39 +47,38 @@ export class CourseDetailsComponent implements OnInit {
   }
   commintShow(){
     this.review.showCommints(this.courseId).subscribe((res:any)=>{
-      this.comments=res;
-for(let i=0;i<this.comments.length;i++){
-  this.comments[i].UserID
-  //this.commentUser.push(this.comments[i].comment)
-  this.user.getUser(this.comments[i].UserID).subscribe((res:any)=>{
-  //  console.log(res.name,res.avatar)
-  
-  this.userComment.UserName=(res.name)
-  this.userComment.UserImage=(res.avatar)
-  this.userComment.comment=(this.comments[i].comment)
-    this.commentUser[i]=this.userComment
-
-   this.new.push(this.commentUser[i])
-   
-   //console.log(this.commentUser[i])
-   
-
-  },(error:any)=>{
- 
-  })
-  
-}
-console.log(this.new )
-   
+      this.comments = res;
+      console.log(this.comments);
       
-     // console.log(this.comments);
-    },
-      (err: any) =>
+      for (let i = 0; i < this.comments.length; i++) { 
+        let id = this.comments[i].UserID;
+        this.user.getUser(id).subscribe((res: any) => {       
+        let  newobj:Comments = {
+          UserName: res.name,
+          comment: this.comments[i].comment,
+          UserImage: res.avatar,
+          createdAt: this.comments[i].createdAt
+          }
+          // console.log(newobj);
+          this.newArry.push(newobj);
+          // console.log(this.newArry);
+         
+        }
+        ,(err:any)=>{
+          console.log(err)
+        }
+        )
+        
+      }
+      
+ 
+      console.log(this.newArry);
+      
+      
+    }, (err: any) =>
       {
         console.log(err);
-      
-       }
-    )
+       })
 
   }
   addCommint(){
