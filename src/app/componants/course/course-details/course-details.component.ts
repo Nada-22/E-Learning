@@ -105,14 +105,15 @@ export class CourseDetailsComponent implements OnInit {
 
   onRate(newRate:any){
     this.rate=newRate;
-    alert(this.rate)
+    // alert(this.rate)
 
-    // this.review.addRate(this.rate,this.courseId).subscribe((res:any)=>{
-    //   console.log(res);
-    // },(err:any)=>{
-    //   console.log(err)
-    // }
-    // )
+    this.review.addRate(this.rate,this.courseId).subscribe((res:any)=>{
+      console.log(res);
+      this.courseDetails(this.courseId);
+    },(err:any)=>{
+      console.log(err)
+    }
+    )
     
     
   }

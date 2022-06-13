@@ -20,6 +20,6 @@ export class ReviewService {
     return this._http.get(this.url+`user/getCourseReviews/${id}`)
   }
   addRate(rate:any,id:any){
-    return this._http.post(this.url+`user/rateCourse/${id}`,rate)
+    return this._http.post(this.url+`user/rateCourse/${id}`,{rate:rate})
   }
 }
