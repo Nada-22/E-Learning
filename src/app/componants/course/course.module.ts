@@ -7,6 +7,7 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { ReactiveFormsModule } from '@angular/forms';
  import {MatTabsModule} from '@angular/material/tabs';
 import { CourseContentComponent } from './course-content/course-content.component'; 
+import { SharedModule } from '../shared/shared.module';
 
 export const routes: Routes = [
   // { path: '', component: CoursesComponent },
@@ -26,9 +27,10 @@ export const routes: Routes = [
     CourseDetailsComponent,
     CourseContentComponent,
     
+    
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),MatTabsModule,ReactiveFormsModule 
+    CommonModule,RouterModule.forChild(routes),MatTabsModule,ReactiveFormsModule,SharedModule
   ]
 })
 export class CourseModule { }

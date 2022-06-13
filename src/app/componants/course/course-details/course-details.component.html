@@ -107,6 +107,8 @@
             <li><a>Numbers of Student <span class="pointer">{{course.noStudents}}</span></a></li>
             <li><a>Rate <span class="pointer">{{course.noRates}}</span></a></li>
             <li><a>Time of Publish <span class="pointer">{{course.createdAt|date}}</span></a></li>
+            <li><a><app-rating></app-rating></a></li>
+
           </ul>
           <a class="main_btn btn btn-primary"(click)="enrollCourse(course._id)">Enroll the Course</a>
         </div>

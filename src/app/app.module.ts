@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenService } from './services/token.service';
-import { RatingComponent } from './componants/rating/rating.component';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { RatingComponent } from './componants/rating/rating.component';
     Notfound404Component,
     FooterComponent,
     MainlayoutComponent,
-    RatingComponent,
     
   ],
   imports: [
