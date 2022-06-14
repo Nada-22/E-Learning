@@ -29,7 +29,8 @@ export class CourseDetailsComponent implements OnInit {
   course = new Course();
   newArry: Comments[]=[];
   rate!:number
-  
+  isEnrolled = false;
+  courses: Course[] = [];
   constructor(private user: UserService, private active: ActivatedRoute,
     private review: ReviewService, private _formBuilder: FormBuilder, private _course: CoursesService,
   private router:Router) { }
@@ -39,12 +40,14 @@ export class CourseDetailsComponent implements OnInit {
       this.courseId = params.get('cId');
       this.courseDetails(this.courseId);
       // this.enrollCourse(this.courseId);
+      
     }
     )
     this.formReview=this._formBuilder.group({
       comment:['',[Validators.required]],
     });
     this.commintShow(); 
+    this.getUserCourses();
   }
   commintShow(){
     this.review.showCommints(this.courseId).subscribe((res:any)=>{
@@ -111,7 +114,15 @@ export class CourseDetailsComponent implements OnInit {
       console.log(res);
       this.courseDetails(this.courseId);
     },(err:any)=>{
-      console.log(err)
+      console.log(err.error.text)
+      if (err.error.text) { 
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops...',
+          text: err.error.text,
+         
+        })
+      }
     }
     )
     
@@ -124,12 +135,11 @@ export class CourseDetailsComponent implements OnInit {
       this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
     }, (err:any) => { 
       console.log(err.error.text)
-      if (err.error.text == "COURSE ALREADY EXISTS !!") {
-        //swall
+      if (err.error.text) {
         Swal.fire({
           icon: 'warning',
           title: 'Oops...',
-          text: 'You already added this course',
+          text: 'You already Enrolled in this course',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
@@ -141,5 +151,21 @@ export class CourseDetailsComponent implements OnInit {
         })
       }
     })
+  }
+  getUserCourses() {
+    this._course.getUserCourses().subscribe(
+      (res: any) => {
+        this.courses = res;
+        for (let i = 0; i < this.courses.length; i++) {
+          if (this.courses[i]._id == this.courseId) {
+            this.isEnrolled = true;
+          }
+        }
+        console.log(this.courses)
+      }, (err: any) => { 
+        console.log(err)
+      }
+    )
+  
   }
 }

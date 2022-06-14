@@ -107,10 +107,14 @@
             <li><a>Numbers of Student <span class="pointer">{{course.noStudents}}</span></a></li>
             <li><a>Numbers of Rate<span class="pointer">{{course.noRates}}</span></a></li>
             <li><a>Time of Publish <span class="pointer">{{course.createdAt|date}}</span></a></li>
-            <li><a>Course Rate <span class="pt-3"><app-rating [rate]="course.courseRate" (change)="onRate($event)"></app-rating></span></a></li><br>
+            <li><a>Course Rate <span class="pt-3">
+              <app-rating [rate]="course.courseRate" (change)="onRate($event)"></app-rating>
+            </span></a></li><br>
 
           </ul>
-          <a class="main_btn btn btn-primary"(click)="enrollCourse(course._id)">Enroll the Course</a>
+          <a *ngIf="!isEnrolled" class="main_btn btn btn-primary"(click)="enrollCourse(course._id)">Enroll the Course</a>
+          <a *ngIf="isEnrolled" class="main_btn btn btn-primary" routerLink="/courses/courseContent/{{course._id}}">Go to Course</a>
+        
         </div>
       </div>
     </div>

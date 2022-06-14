@@ -14,7 +14,8 @@ import Swal from 'sweetalert2';
 export class HomeComponent implements OnInit {
 userId:any;
   categories: any = []
-  courses: Course[]=[]
+  courses: Course[] = []
+  stars=[1,2,3,4,5]
   constructor(private _user:UserService,private cat:CategoryService,private router:Router,private _course:CoursesService) { }
   getCat(){
     this.cat.getAllCat().subscribe((res)=>{

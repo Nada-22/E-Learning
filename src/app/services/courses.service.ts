@@ -30,5 +30,9 @@ export class CoursesService {
   getUserCourses() {
     return this.http.get(this.url + 'user/getallcourses')
   
-}
+  }
+  deleteCourse(CourseID: any) {
+    alert(CourseID)
+    return this.http.delete(this.url + 'user/deleteCourse',  CourseID )
+  }
 }

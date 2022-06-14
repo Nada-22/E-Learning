@@ -324,11 +324,7 @@
                     <div class="text-center p-4 pb-0">
                         <h3 class="mb-0">{{course.name|uppercase}}</h3>
                         <div class="mb-3">
-                            <small class="fa fa-star text-info"></small>
-                            <small class="fa fa-star text-info"></small>
-                            <small class="fa fa-star text-info"></small>
-                            <small class="fa fa-star text-info"></small>
-                            <small class="fa fa-star text-info"></small>
+                            <app-avg-rate [rate]="course.courseRate"></app-avg-rate>
                             <small>({{course.noRates}})</small>
                         </div>
                         <h5 class="mb-4">{{course.category}}</h5>
