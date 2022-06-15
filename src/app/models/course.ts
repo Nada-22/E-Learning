@@ -12,7 +12,7 @@ export class Course{
     createdAt!: Date;
     _id!: string;
     courseRate!:number;
-    
+    rate:number=0;
 
 }
 // category: "Backend-development"

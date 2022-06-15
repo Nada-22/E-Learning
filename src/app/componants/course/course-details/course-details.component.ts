@@ -31,6 +31,8 @@ export class CourseDetailsComponent implements OnInit {
   rate!:number
   isEnrolled = false;
   courses: Course[] = [];
+  result!: boolean;
+  userRate = 0;
   constructor(private user: UserService, private active: ActivatedRoute,
     private review: ReviewService, private _formBuilder: FormBuilder, private _course: CoursesService,
   private router:Router) { }
@@ -48,6 +50,7 @@ export class CourseDetailsComponent implements OnInit {
     });
     this.commintShow(); 
     this.getUserCourses();
+    this.getuser();
   }
   commintShow(){
     this.review.showCommints(this.courseId).subscribe((res:any)=>{
@@ -75,7 +78,13 @@ export class CourseDetailsComponent implements OnInit {
         
       }
       
- 
+      if (this.newArry.length == 0) { 
+        this.result = false;
+        return this.result;
+      } else {
+        this.result = true;
+        return this.result;
+      }
       console.log(this.newArry);
       
       
@@ -113,13 +122,13 @@ export class CourseDetailsComponent implements OnInit {
     this.review.addRate(this.rate,this.courseId).subscribe((res:any)=>{
       console.log(res);
       this.courseDetails(this.courseId);
-    },(err:any)=>{
-      console.log(err.error.text)
-      if (err.error.text) { 
+    }, (err: any) => {
+      console.log(err.error);
+      if (err.error) { 
         Swal.fire({
           icon: 'warning',
           title: 'Oops...',
-          text: err.error.text,
+          text: err.error,
          
         })
       }
@@ -168,4 +177,16 @@ export class CourseDetailsComponent implements OnInit {
     )
   
   }
+  usercourse=new Course();
+  getuser() {
+    this.user.getLoginUser().subscribe((res:any) => {
+      this.usercourse=  res.Courses.find((item: {courserObj: any;}) => item.courserObj == this.courseId);
+      console.log(this.usercourse);
+      this.userRate=this.usercourse.rate;
+    },
+      (error:any) => {
+        console.log(error);
+      });
+  
+}
 }
