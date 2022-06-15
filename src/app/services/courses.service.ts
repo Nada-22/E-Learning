@@ -32,7 +32,7 @@ export class CoursesService {
   
   }
   deleteCourse(CourseID: any) {
-    alert(CourseID)
-    return this.http.delete(this.url + 'user/deleteCourse',  CourseID )
+    
+    return this.http.delete(this.url + `user/deleteCourse/${ CourseID}`)
   }
 }

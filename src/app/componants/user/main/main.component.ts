@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
   tableSize: number = 2;
   tableSizes: any = [3, 6, 9, 12];
   p: any = 1;
+  result=false
   count: any = 2;
   course=new Course();
   constructor(private _course: CoursesService) { }
@@ -25,6 +26,9 @@ courses!:Course[]
     this._course.getUserCourses().subscribe(
       (res: any) => {
         this.courses = res;
+        if(this.courses.length==0){
+           this.result=true
+        }
         console.log(this.courses)
       }, (err: any) => { 
         console.log(err)
@@ -38,7 +42,7 @@ courses!:Course[]
     this._course.deleteCourse(id).subscribe(
       (res: any) => {
         console.log(res)
-        // this.getUserCourses();
+         this.getUserCourses();
       }, (err: any) => { 
         console.log(err)
       }
