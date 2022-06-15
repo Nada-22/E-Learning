@@ -315,7 +315,8 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" *ngFor="let course of courses" data-wow-delay="0.1s">
                 <div class="course-item bg-light" *ngIf="course">
                     <div class="position-relative overflow-hidden">
-                        <img class="img-fluid" src="data:image/jpg;base64,{{course.image}}" alt="">
+                        <img *ngIf="!course.image" class="img-fluid" src="../../../../assets/img/course-1.jpg" alt="">
+                        <img *ngIf="course.image" class="img-fluid" src="data:image/jpg;base64,{{course.image}}" alt="">
                         <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                             <a routerLink="/courses/courseDetails/{{course._id}}" class="flex-shrink-0 btn btn-sm btn-info px-3 border-end text-white" style="border-radius: 30px 0 0 30px;">Read More</a>
                             <a class="flex-shrink-0 btn btn-sm btn-info px-3 text-white" style="border-radius: 0 30px 30px 0;" (click)="enrollCourse(course._id)">Join Now</a>

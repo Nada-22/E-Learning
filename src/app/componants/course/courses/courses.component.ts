@@ -44,7 +44,7 @@ export class CoursesComponent implements OnInit {
       for(let i=0;i<this.Courses.length;i++){
        console.log(this.Courses[i].image)
        
-        if (this.Courses[i].image.length == 12) {
+        if (!this.Courses[i].image.length) {
           this.Courses[i].image = null;
       
        
