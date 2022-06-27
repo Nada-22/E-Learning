@@ -1,3 +1,4 @@
+import  Swal  from 'sweetalert2';
 import { CoursesService } from './../../../services/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/models/course';
@@ -38,9 +39,17 @@ export class MainComponent implements OnInit {
   
   }
   deleteCourse(id: any) { 
-    // alert(id)
-    
-    this._course.deleteCourse(id).subscribe(
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+         this._course.deleteCourse(id).subscribe(
       (res: any) => {
         console.log(res)
          this.getUserCourses();
@@ -48,5 +57,8 @@ export class MainComponent implements OnInit {
         console.log(err)
       }
     )
+       }
+      })
+   
   }
 }
