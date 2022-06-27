@@ -20,9 +20,9 @@ userId:any;
   getCat(){
     this.cat.getAllCat().subscribe((res)=>{
       this.categories=res
-      console.log(this.categories)
+      //console.log(this.categories)
     },(error)=>{
-      console.log(error)
+      //console.log(error)
     })
   }
   searshByName(Name:string){
@@ -32,7 +32,7 @@ userId:any;
   })
   }
   ngOnInit(): void {
-    // console.log(this.userId)
+    // //console.log(this.userId)
     this.getCat();
     this.getTop3Courses();
   }
@@ -40,26 +40,26 @@ userId:any;
   getTop3Courses() {
     this._course.getTopCourses().subscribe((res: any) => {
       this.courses = res
-      console.log(this.courses)
-      console.log("sss");
+      //console.log(this.courses)
+      //console.log("sss");
       
     
      }
       , (error:any) => { 
 
-        console.log(error);
+        //console.log(error);
         
       })
 }
   enrollCourse(courseId: any) {   
 
   this._course.addusercourse(courseId).subscribe((res:any)=>{
-    console.log(res)
+    //console.log(res)
     this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
   }, (err: any) => { 
-    console.log(err);
+    //console.log(err);
     
-    console.log(err.error.text)
+    //console.log(err.error.text)
     if (err.error.text == "COURSE ALREADY EXISTS !!") {
       //swall
       Swal.fire({

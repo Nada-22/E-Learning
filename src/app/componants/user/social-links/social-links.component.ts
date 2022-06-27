@@ -32,16 +32,16 @@ export class SocialLinksComponent implements OnInit {
     this.user.socialLinks[2].Google = data.Google;
     this.user.socialLinks[3].LinkedIn = data.LinkedIn;
     this.user.socialLinks[4].GitHub = data.GitHub;
-    console.log(this.user.socialLinks);
+    //console.log(this.user.socialLinks);
     
     this._user.SocialLins(this.user.socialLinks).subscribe(
       (res: any) => {
         // this.user.socialLinks = res.socialLinks;
-        console.log(res)
-        // console.log(this.user.socialLinks);
+        //console.log(res)
+        // //console.log(this.user.socialLinks);
         
       }, (err: any) => { 
-        console.log(err)
+        //console.log(err)
       }
     )
   
@@ -49,10 +49,10 @@ export class SocialLinksComponent implements OnInit {
   getuser() {
     this._user.getLoginUser().subscribe((res:any) => {
       this.loginUser.socialLinks = res.socialLinks;
-      console.log(this.loginUser.socialLinks);
+      //console.log(this.loginUser.socialLinks);
     },
       (error:any) => {
-        console.log(error);
+        //console.log(error);
       });
   
 }

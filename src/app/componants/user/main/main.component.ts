@@ -31,9 +31,9 @@ export class MainComponent implements OnInit {
         if(this.courses.length==0){
            this.result=true
         }
-        console.log(this.courses)
+        // console.log(this.courses)
       }, (err: any) => { 
-        console.log(err)
+        //console.log(err)
       }
     )
   
@@ -51,10 +51,10 @@ export class MainComponent implements OnInit {
       if (result.isConfirmed) {
          this._course.deleteCourse(id).subscribe(
       (res: any) => {
-        console.log(res)
+        //console.log(res)
          this.getUserCourses();
       }, (err: any) => { 
-        console.log(err)
+        //console.log(err)
       }
     )
        }

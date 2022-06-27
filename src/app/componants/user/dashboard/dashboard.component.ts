@@ -18,13 +18,13 @@ export class DashboardComponent implements OnInit {
   }
   logout(){
     this.service.logout().subscribe((res:any)=>{
-      console.log("done")
+      //console.log("done")
       localStorage.removeItem('token');
       this.router.navigateByUrl('/user/signin');
 
     },
     (error:any)=>{
-      console.log(error)
+      //console.log(error)
     })
     
 
@@ -35,10 +35,10 @@ export class DashboardComponent implements OnInit {
   getuser() {
     this._user.getLoginUser().subscribe((res:any) => {
       this.user = res;
-      console.log(this.user);
+      //console.log(this.user);
     },
       (error:any) => {
-        console.log(error);
+        //console.log(error);
       });
   
 }

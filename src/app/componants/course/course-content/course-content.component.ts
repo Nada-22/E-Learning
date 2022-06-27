@@ -20,20 +20,20 @@ export class CourseContentComponent implements OnInit {
     this._active.paramMap.subscribe(params =>{
       this.courseId = params.get('id');
     })
-    console.log(this.courseId);
+    //console.log(this.courseId);
     this.getPlaylist();
   }
   getPlaylist(){
     this._course.getCoursePlaylist(this.courseId).subscribe((res:any)=>{
-      console.log(res);
+      //console.log(res);
       this.playlist=res.playlist;
-      // console.log(this.playlist)
+      // //console.log(this.playlist)
       this.info=res;
       this.itemOne=this.playlist[0].link
-      console.log(this.itemOne)
+      //console.log(this.itemOne)
       $('#myframe').attr("src",this.videoPath+this.itemOne)
     },(error)=>{
-      console.log(error)
+      //console.log(error)
     }
     )
   }

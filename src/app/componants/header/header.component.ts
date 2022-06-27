@@ -18,7 +18,7 @@ categories:any=[]
   constructor(private _auth:AuthService,private _user:UserService,private data:UserdataService,private cat:CategoryService) { }
   ngOnInit(): void {
       this.userId=localStorage.getItem('token');
-      console.log(this.userId)
+      //console.log(this.userId)
        this.getuser();
        this.getCat()
     // this.usertoken();
@@ -28,14 +28,14 @@ categories:any=[]
     getuser() {
     this._user.getLoginUser().subscribe(
       (res: any) => { 
-         console.log(res);  
+         //console.log(res);  
          this.loguser=res;
        // this.loguser.mail = res.mail;
        // this.subscription = this.data.currentdata.subscribe(userinfo => this.loguser = userinfo)
 
       },
       (err: any) => { 
-        console.log(err);
+        //console.log(err);
       }
       );
     // return this.loguser;
@@ -44,9 +44,9 @@ categories:any=[]
     getCat(){
       this.cat.getAllCat().subscribe((res:any)=>{
         this.categories=res
-        console.log(this.categories)
+        //console.log(this.categories)
       },(error:any)=>{
-        console.log(error)
+        //console.log(error)
       })
     }
   

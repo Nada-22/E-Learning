@@ -41,7 +41,7 @@ export class GeneralComponent implements OnInit {
   }
   updateUser(): void {
     this.user =this.userform.value
-    console.log(this.user);  
+    //////console.log(this.user);  
     this._user.updateUser(this.user).subscribe({
       next:(res:any)=>{
         this.addImage()
@@ -51,7 +51,7 @@ export class GeneralComponent implements OnInit {
     })
   }
   handelUpload(event:any){
-    console.log(event)
+    //////console.log(event)
     this.file=event.target.files
   }
   addImage(){
@@ -64,10 +64,10 @@ export class GeneralComponent implements OnInit {
   getuser() {
     this._user.getLoginUser().subscribe((res:any) => {
       this.user = res;
-      console.log(this.user);
+      //////console.log(this.user);
     },
       (error:any) => {
-        console.log(error);
+        //////console.log(error);
       });
   
   }

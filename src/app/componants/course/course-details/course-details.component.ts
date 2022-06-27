@@ -55,7 +55,7 @@ export class CourseDetailsComponent implements OnInit {
   commintShow(){
     this.review.showCommints(this.courseId).subscribe((res:any)=>{
       this.comments = res;
-      console.log(this.comments);
+      //console.log(this.comments);
       
       for (let i = 0; i < this.comments.length; i++) { 
         let id = this.comments[i].UserID;
@@ -66,13 +66,13 @@ export class CourseDetailsComponent implements OnInit {
           UserImage: res.avatar,
           createdAt: this.comments[i].createdAt
           }
-          // console.log(newobj);
+          // //console.log(newobj);
           this.newArry.push(newobj);
-          // console.log(this.newArry);
-         console.log(res)
+          // //console.log(this.newArry);
+         //console.log(res)
         }
         ,(err:any)=>{
-          console.log(err)
+          //console.log(err)
         }
         )
         
@@ -85,22 +85,22 @@ export class CourseDetailsComponent implements OnInit {
         this.result = true;
         return this.result;
       }
-      console.log(this.newArry);
+      //console.log(this.newArry);
       
       
     }, (err: any) =>
       {
-        console.log(err);
+        //console.log(err);
        })
 
   }
   addCommint(){
 
     this.review.addReview(this.formReview.value,this.courseId).subscribe((res:any)=>{
-      console.log(res)
+      //console.log(res)
       this.commintShow();
     },(error:any)=>{
-      console.log(error)
+      //console.log(error)
     }
     )
 
@@ -109,10 +109,10 @@ export class CourseDetailsComponent implements OnInit {
     this._course.CourseDetails(courseid).subscribe(
       (res: any) => {
         this.course = res;
-        console.log(this.course);
+        //console.log(this.course);
        }
       , (error: any) => {
-        console.log(error);
+        //console.log(error);
        })
   }
 
@@ -120,10 +120,10 @@ export class CourseDetailsComponent implements OnInit {
     this.rate=newRate;
     // alert(this.rate)
     this.review.addRate(this.rate,this.courseId).subscribe((res:any)=>{
-      console.log(res);
+      //console.log(res);
       this.courseDetails(this.courseId);
     }, (err: any) => {
-      console.log(err.error);
+      //console.log(err.error);
       if (err.error) { 
         Swal.fire({
           icon: 'warning',
@@ -140,10 +140,10 @@ export class CourseDetailsComponent implements OnInit {
 
   enrollCourse(courseId:any) {     
     this._course.addusercourse(courseId).subscribe((res:any)=>{
-      console.log(res)
+      //console.log(res)
       this.router.navigateByUrl(`/courses/courseContent/${courseId}`)
     }, (err:any) => { 
-      console.log(err.error.text)
+      //console.log(err.error.text)
       if (err.error.text) {
         Swal.fire({
           icon: 'warning',
@@ -170,10 +170,10 @@ export class CourseDetailsComponent implements OnInit {
             this.isEnrolled = true;
           }
         }
-        console.log(this.courses)
+        //console.log(this.courses)
       }, (err: any) => { 
         
-        console.log(err)
+        //console.log(err)
       }
     )
   
@@ -182,11 +182,11 @@ export class CourseDetailsComponent implements OnInit {
   getuser() {
     this.user.getLoginUser().subscribe((res:any) => {
       this.usercourse=  res.Courses.find((item: {courserObj: any;}) => item.courserObj == this.courseId);
-      console.log(this.usercourse);
+      //console.log(this.usercourse);
       this.userRate=this.usercourse.rate;
     },
       (error:any) => {
-        console.log(error);
+        //console.log(error);
       });
   
 }

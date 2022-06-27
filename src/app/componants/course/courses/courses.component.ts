@@ -30,21 +30,21 @@ export class CoursesComponent implements OnInit {
   
     // this.usercourse()
     this._course.serchbycoursename().subscribe((res) => { 
-      console.log(res);
+      //console.log(res);
       // alert(res)
     }, (err) => {
-      console.log(err);
+      //console.log(err);
       
      })
   }
   searshByName(Name:string){
     this.cat.searchbyCat(Name).subscribe((res)=>{
       this.Courses=res
-      console.log(this.Courses)
+      //console.log(this.Courses)
       for(let i=0;i<this.Courses.length;i++){
-       console.log(this.Courses[i].image)
+       //console.log(this.Courses[i].image)
        
-        if (!this.Courses[i].image.length) {
+        if (!this.Courses[i].image?.length) {
           this.Courses[i].image = null;
       
        
@@ -52,7 +52,7 @@ export class CoursesComponent implements OnInit {
 //  let  objectURL = 'data:image/jpeg;base64,' +this.Courses[i].image= this.sanitize.bypassSecurityTrustUrl(objectURL)
       }   
     }, (err) => { 
-      console.log(err)
+      //console.log(err)
     })
   }
   course = new Course();
@@ -60,10 +60,10 @@ export class CoursesComponent implements OnInit {
     this.course.CourseID = courseId;
     
     this._course.addusercourse(this.course.CourseID).subscribe((res:any)=>{
-      console.log(res)
+      //console.log(res)
       this.router.navigateByUrl(`/courses/courseContent/${this.course.CourseID}`)
     }, (err:any) => { 
-      console.log(err.error.text)
+      //console.log(err.error.text)
       if (err.error.text == "COURSE ALREADY EXISTS !!") {
         //swall
         Swal.fire({
