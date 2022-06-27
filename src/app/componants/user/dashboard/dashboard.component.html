@@ -12,7 +12,8 @@
             <div class="account-settings" >
               <div class="user-profile">
                 <div class="user-avatar" >
-                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                  <img *ngIf="user.avatar" src="data:image/jpg;base64,{{user.avatar}}" >
+                  <img *ngIf="!user.avatar" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
                 </div>
                 <h5 class="user-name">{{user.name}}</h5>
                 <h6 class="user-email">{{user.mail}}</h6>
@@ -22,8 +23,7 @@
           <div style="border-right: solid .5px rgb(221, 217, 217);">
         <a class="list-group-item list-group-item-action active" data-toggle="list"
             routerLink="dashBoard" routerLinkActive="router-link-active">Dashboard</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list"
-             routerLink="courses">Courses</a>
+          
           <a class="list-group-item list-group-item-action " data-toggle="list"
             routerLink="general" routerLinkActive="router-link-active" >Info</a>
           <!-- <a class="list-group-item list-group-item-action" data-toggle="list" 

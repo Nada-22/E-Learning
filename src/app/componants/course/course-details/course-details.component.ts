@@ -98,6 +98,7 @@ export class CourseDetailsComponent implements OnInit {
 
     this.review.addReview(this.formReview.value,this.courseId).subscribe((res:any)=>{
       console.log(res)
+      this.commintShow();
     },(error:any)=>{
       console.log(error)
     }
@@ -118,7 +119,6 @@ export class CourseDetailsComponent implements OnInit {
   onRate(newRate:any){
     this.rate=newRate;
     // alert(this.rate)
-
     this.review.addRate(this.rate,this.courseId).subscribe((res:any)=>{
       console.log(res);
       this.courseDetails(this.courseId);
@@ -172,6 +172,7 @@ export class CourseDetailsComponent implements OnInit {
         }
         console.log(this.courses)
       }, (err: any) => { 
+        
         console.log(err)
       }
     )

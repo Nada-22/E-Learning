@@ -17,7 +17,8 @@ export class MainComponent implements OnInit {
   count: any = 2;
   course=new Course();
   constructor(private _course: CoursesService) { }
-courses!:Course[]
+  courses!: Course[];
+  value = '';
   ngOnInit(): void {
     this.getUserCourses();
     // this.deleteCourse("629e06e516f34840e26ca11e");

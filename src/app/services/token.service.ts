@@ -11,7 +11,9 @@ export class TokenService implements HttpInterceptor{
   constructor(private service:AuthService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let  token=this.service.getToken()
-let newreq=req.clone({ setHeaders:{Authorization:'Bearer '+ token }
+    let newreq = req.clone({
+      
+        setHeaders: { Authorization: 'Bearer ' + token }
 })
   return next.handle(newreq)
      

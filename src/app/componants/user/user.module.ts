@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { SummaryComponent } from './summary/summary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchFilterPipe} from '../../pipes/search-filter.pipe';
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   // { path: 'dashboard', component: DashboardComponent },
@@ -42,6 +43,7 @@ export const routes: Routes = [
     DashboardComponent,
     SocialLinksComponent,
     ConnectionsComponent,
+    SearchFilterPipe
   ],
   imports: [
     FormsModule,

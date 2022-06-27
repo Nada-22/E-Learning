@@ -30,10 +30,10 @@
                     <div class="thumb">
                     </div>
                     <div class="desc">
-                      <h5>{{info.name}}</h5>
-                      <p class="date">{{info.time | date:'dd/MM/yyyy HH:mm:ss'}} </p>
+                      <h5>{{info?.name}}</h5>
+                      <p class="date">{{info?.time | date:'dd/MM/yyyy HH:mm:ss'}} </p>
                       <p class="comment">
-                        Instructor Name : {{info.instructorName}}
+                        Instructor Name : {{info?.instructorName}}
                       </p>
                       <p class="comment">
                         Number of videos : {{playlist.length}}

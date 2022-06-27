@@ -1,9 +1,13 @@
-
-  <mat-card class="example-card" *ngFor="let course of courses |  paginate: { itemsPerPage: count, currentPage: p }">
+<div class="form-group mt-5 ms-5" >
+  <input type="text" class="form-control mb-4 ms-4 col-6" placeholder="Search" [(ngModel)]="value" id="listSearch">
+</div>
+  <mat-card class="example-card" *ngFor="let course of courses | 
+   paginate: { itemsPerPage: count, currentPage: p } | searchFilter:value">
     <mat-card-title-group>
       <mat-card-title>{{course.name}}</mat-card-title>
       <mat-card-subtitle>{{course.category}}</mat-card-subtitle>
-      <img mat-card-sm-image src="data:image/jpg;base64,{{course.image}}" >
+      <img *ngIf="!course.image" mat-card-sm-image src="../../../../assets/img/course-1.jpg" >
+      <img *ngIf="course.image" mat-card-sm-image src="data:image/jpg;base64,{{course.image}}" >
     </mat-card-title-group>
     <mat-card-content>
      {{course.description}}
